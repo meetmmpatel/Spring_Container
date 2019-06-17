@@ -21,3 +21,5 @@
 			• Two Types of Container 
 				• BeanFactory container
 				• ApplicationContext container
+				
+				https://github.com/meetmmpatel/Spring_Container/blob/master/BeanFactoryVsApplicartionContext.jpeg
