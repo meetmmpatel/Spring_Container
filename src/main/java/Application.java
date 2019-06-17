@@ -1,9 +1,11 @@
 import javaBased.AppConfig;
 import javaBased.HelloWorld;
 
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 import xmlBased.Car;
 
 
@@ -12,6 +14,7 @@ public class Application {
 	disableWarning();
 	javaBasedConfig();
 	xmlBasedCofig();
+	usingBeanFactory();
 	
   }
   
@@ -47,6 +50,17 @@ public class Application {
 	System.out.println("Car One Hashcode: " + car.hashCode());
 	System.out.println("Car Two Hashcode: " + carTwo.hashCode());
 	
+  }
+  
+  public static void usingBeanFactory(){
+  
+	XmlBeanFactory  factory =
+			new XmlBeanFactory(new ClassPathResource("applicationContext.xml"));
+  		Car car = (Car)factory.getBean("car");
+  		car.setCarColor("Red");
+	System.out.println("Using XmlBeanFactory: " + car.getCarColor());
+	System.out.println("Using Bean Factory Hashcode : " + car.hashCode());
+  
   }
   
   public static void disableWarning() {
